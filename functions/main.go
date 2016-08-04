@@ -48,6 +48,7 @@ func main(){
 	func(){
 		fmt.Println("\nJust executed.")
 	}()
+
 }
 
 // Function with no return
