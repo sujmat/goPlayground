@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
+	"strings"
 )
 
 type foo int
@@ -62,7 +64,6 @@ func main() {
 		},
 		LicenseToKill: true,
 	}
-
 	fmt.Println(d1.agentStatus())
 
 	// Struct Overriding example
@@ -81,4 +82,25 @@ func main() {
 	fmt.Println(bs)
 	fmt.Printf("%T \n", bs)
 	fmt.Println(string(bs))
+
+	//JSON unmarshal example
+	var p3 Person
+	bs2 := []byte(`{"First":"James","Last":"Bond","Age":20}`)
+	json.Unmarshal(bs2, &p3)
+	fmt.Println(p3.First)
+	fmt.Println(p3.Last)
+	fmt.Println(p3.Age)
+	fmt.Printf("%T \n", p3)
+
+	//JSON encode example
+	p4 := Person{"John", "Wayne", 40, 9}
+	json.NewEncoder(os.Stdout).Encode(p4)
+
+	//JSON decode example
+	var p5 Person
+	rdr := strings.NewReader(`{"First":"James","Last":"Bond","Age":20}`)
+	json.NewDecoder(rdr).Decode(&p5)
+	fmt.Println(p5.First)
+	fmt.Println(p5.Last)
+	fmt.Println(p5.Age)
 }
