@@ -30,12 +30,11 @@ func (arr ByName) Less(i, j int) bool { return s[i] < s[j] }
 
 func main() {
 	s = []string {"Zeno","John","Al","Jenny"}
-	per = []Person{{"Beatrice",20},{"Zack",30},{"Al",23},{"Rick",59},{"Aaron",90}}
+	per = []Person{{"Beatrice",20},{"Zack",30},{"Al",23},{"Rick",59},{"Aaron",90},{"Nani",10}}
 
 	fmt.Println(s)
 	sort.Sort(ByName(s))
 	fmt.Println("Sorted: ",s)
-
 
 	fmt.Println(per)
 	sort.Sort(ByPerson(per))
